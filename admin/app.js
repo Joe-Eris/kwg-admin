@@ -1,4 +1,4 @@
-const API = "https://api-mem.31.97.157.68.sslip.io";
+const API = "https://sslip.io";
 let csrf='';
 const q=s=>document.querySelector(s);
 async function api(path,opt={}){opt.credentials='include';opt.headers={...(opt.headers||{}),...(csrf?{'X-CSRF-Token':csrf}:{})};if(opt.body&&!(opt.body instanceof FormData))opt.headers['Content-Type']='application/json';const r=await fetch(API+path,opt);const b=await r.json().catch(()=>({}));if(!r.ok)throw new Error(b.error||'Request failed');return b;}
