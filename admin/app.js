@@ -1,4 +1,4 @@
-const API=window.KWGM_CONFIG.API_BASE;
+const API = "https://api-mem.YOUR_SERVER_IP.sslip.io";
 let csrf='';
 const q=s=>document.querySelector(s);
 async function api(path,opt={}){opt.credentials='include';opt.headers={...(opt.headers||{}),...(csrf?{'X-CSRF-Token':csrf}:{})};if(opt.body&&!(opt.body instanceof FormData))opt.headers['Content-Type']='application/json';const r=await fetch(API+path,opt);const b=await r.json().catch(()=>({}));if(!r.ok)throw new Error(b.error||'Request failed');return b;}
